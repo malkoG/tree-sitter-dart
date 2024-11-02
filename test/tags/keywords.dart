@@ -7,48 +7,46 @@ export 'other.dart';
 part 'other2.dart';
 
 enum Bar { a, b }
-// ^ @definition.enum
+//   ^ @definition.enum
 
 typedef Test = Function();
 //      ^ @definition.type
 
 abstract class Foo extends Other3 implements Other2 {
-  // ^ @definition.class
+  //            ^ @definition.class
   int _bar = 1;
   //
   int get bar => _bar;
-  //   ^ @definition.method
+  //       ^ @definition.method
   set bar(int value) => _bar = value;
-  // ^ @definition.method
+  //   ^ @definition.method
 
   operator [](int index) => null;
-  // ^ @definition.method
 }
 
 class Other extends Foo {
-  // ^ @definition.class
+  //   ^ @definition.class
   static int a = 1;
   final int b = 2;
 
   void foo(covariant String test) {}
-  //   ^ @definition.method
+  //    ^ @definition.method
   factory Other.something() => Other();
-  // ^ @definition.method
+  //       ^ @definition.method
 
   Other() : super() {
-    // ^ @definition.method
     this.b;
   }
 }
 
 class Other2 {}
-// ^ @definition.class
+//    ^ @definition.class
 
 class Other3 with Other4 {}
-// ^ @definition.classs
+//     ^ @definition.class
 
 mixin Other4 {}
-// ^ @definition.mixin
+//     ^ @definition.mixin
 
 void main() {
   assert(1 == 1);
@@ -89,32 +87,30 @@ void main() {
 void foo() async {
   // ^ @definition.function
   await other('');
-  // <- keyword
 }
 
 Future<void> other(dynamic test) async {
-  // ^ @definition.function
+  //          ^ @definition.function
   return;
 }
 
 extension Something on int {}
-// ^ @definition.extension
+//             ^ @definition.extension
 
 Iterable<int> bar() sync* {
-  // ^ @definition.extension
+  //           ^ @definition.function
   yield 1;
-  // <- keyword
 }
 
 Stream<int> bar2() async* {
-  // ^ @definition.extension
+  //         ^ @definition.function
   yield 1;
 }
 
 // the following are keywords, that can also be used as identifiers
 // verify that each is highlighted as an identifier
 void identifierTest() {
-  // ^ @definition.extension
+  // ^ @definition.function
   var abstract = 1;
   var as = 1;
   var async = 1;

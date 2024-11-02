@@ -17,11 +17,8 @@
 (class_definition
   name: (identifier) @name) @definition.class
 
-(enum_declaration
-  name: (identifier) @name) @definition.enum
-
-(function_signature
-  name: (identifier) @name) @definition.function 
+(method_signature
+  (function_signature)) @definition.method
 
 (type_alias
   (type_identifier) @name) @definition.type
@@ -49,8 +46,11 @@
 (method_signature
   (operator_signature)) @definition.method
 
+(method_signature) @definition.method
+
 (mixin_declaration
-  name: (identifier) @name) @definition.mixin
+  (mixin)
+  (identifier) @name) @definition.mixin
 
 (extension_declaration
   name: (identifier) @name) @definition.extension
@@ -130,3 +130,10 @@
 ;
 ;; * modules
 ;(alias) @name @reference.module
+
+(enum_declaration
+  name: (identifier) @name) @definition.enum
+
+(function_signature
+  name: (identifier) @name) @definition.function 
+

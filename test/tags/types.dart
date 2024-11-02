@@ -1,71 +1,58 @@
 enum Material {
-  //  ^ type
+  //  ^ @definition.enum
   DENIM,
-  // <- identifier.constant
   CANVAS
 }
 
 class Person {
-  //   ^ type
+  //    ^ @definition.class
   String name;
 
   Person(String name) {
-    // <- type
-    //    ^ type.builtin
     this.name = name;
     this.pants = new Pants<Pocket>();
-    //                ^ type
-    //                       ^ type
   }
 
   Person.other(this.name);
-  //            ^ variable.builtin
 
   String getName() {
-    // <- type.builtin
-    //    ^ function
+    //   ^ @definition.method
     return this.name;
-
-    return Material.DENIM;
   }
 }
 
 class Collections {
+  //    ^ @definition.class
   static List<T> emptyList<T>() {
+    //             ^ @definition.method
     return [];
   }
 }
 
 class someClass<T> {
+  //    ^ @definition.class
   List<T> someMethod() {
+    //     ^ @definition.method
     List<T> list = Collections.emptyList<T>();
     return list;
   }
 
   void anotherMethod<S>(S arg) {
+    //   ^ @definition.method
     List<S> list = Collections.emptyList<S>();
   }
 }
 
 class TestClass<A, B> {
-  //           ^ punctuation.bracket
-  //                ^ punctuation.bracket
+// 		 ^ @definition.class
 
   List<String> foo() {
-    //^ punctuation.bracket
-    //       ^ punctuation.bracket
+    //          ^ @definition.method
     return <String>[];
-    //     ^ punctuation.bracket
-    //            ^ punctuation.bracket
   }
 
   Map test<A, B>() {
-    //    ^ punctuation.bracket
-    //         ^ punctuation.bracket
+    //  ^ @definition.method
     return Map<int, String>.from(<int, String>{});
-    //        ^ punctuation.bracket
-    //                    ^ punctuation.bracket
-    //                           ^ punctuation.bracket
-    //                                       ^ punctuation.bracket
   }
 }

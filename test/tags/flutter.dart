@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // ^ @definition.class
+  //  ^ @definition.class
   const MyApp({Key key}) : super(key: key);
 
   @override
@@ -15,12 +15,12 @@ class MyApp extends StatelessWidget {
 }
 
 Future<void> hello() async {
-  // ^ @definition.function
+  //          ^ @definition.function
 }
 
 Stream<String> helloStream() async* {
-  // ^ @definition.function
+  //                  ^ @definition.function
 }
 Iterable<String> helloIter() sync* {
-  // ^ @definition.function
+  //              ^ @definition.function
 }
